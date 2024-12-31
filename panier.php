@@ -47,10 +47,13 @@ if (isset($_GET['remove_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Cart</title>
+    <link rel="stylesheet" href="panier.css">
+  
 </head>
 <body>
+    <div class="container">
     <h2>Your Cart</h2>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>Product Name</th>
@@ -63,27 +66,31 @@ if (isset($_GET['remove_id'])) {
             <?php foreach ($cartItems as $item) : ?>
                 <tr>
                     <td><?php echo $item->nom_produit; ?></td>
-                    <td><?php echo number_format($item->prix, 2); ?> DH</td>
+                    <td><?php echo $item->prix; ?> DH</td>
                     <td>
                         <form method="POST">
-                            <input type="number" name="quantite" value="<?php echo $item->quantite; ?>" min="1" required>
+                            <input type="number" name="quantite" value="<?php echo $item->quantite; ?>" required min="1">
                             <input type="hidden" name="id_produit" value="<?php echo $item->id_produit; ?>">
                             <button type="submit" name="update_quantity">Update</button>
                         </form>
                     </td>
                     <td>
-                        <a href="panier.php?remove_id=<?php echo $item->id_produit; ?>">Remove</a>
+                        <a href="panier.php?remove_id=<?php echo $item->id_produit; ?>"><img src="images/trash.png" style="width: 30px;"></a>
                     </td>
                 </tr>
                 <?php
-                
                 $total += $item->prix * $item->quantite;
                 ?>
             <?php endforeach; ?>
         </tbody>
     </table>
 
-    <h3>Total: <?php echo $total; ?> DH</h3>
-    <a href="home.php">Back to Shop</a>
+    <div class="total">
+        <h3>Total: <?php echo $total; ?> DH</h3>
+    </div>
+
+    <a href="home.php" class="back-btn">Back to Shop</a>
+    </div>
+ 
 </body>
 </html>

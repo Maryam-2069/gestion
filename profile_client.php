@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="admin.css?v-1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 
@@ -23,17 +23,22 @@ session_start();
                 </li>
                 <li>
                     <img src="images/heart.png" alt="Clients Icon">
-                    <a href="">Favorite</a>
+                    <a href="favorite.php">Favorite</a>
                 </li>
                 <li>
                     <img src="images/icons8-cart-50.png" alt="Clients Icon">
-                    <a href="">Orders</a>
+                    <a href="panier.php">Orders</a>
+                </li>
+                <li>
+                    <img src="images/goback.png" alt="Logout Icon">
+                    <a href="home.php">Go Back Shop</a>
                 </li>
                 <li>
                     <img src="images/logout.png" alt="Logout Icon">
                     <a href="logout.php">Logout</a>
                 </li>
             </ul>
+            
         </div>
         <?php
         require_once "cnx.php";
@@ -50,15 +55,20 @@ session_start();
             $email = $_POST['email'];
             $adresse = $_POST['adresse'];
             $telephone = $_POST['tel'];
-            $pass = $_POST['pass'];
-            $confirm = $_POST['confirm'];
+            $oldpass = $_POST['oldpass'];
+            $newpass = $_POST['newpass'];
 
             if (!empty($nom) && !empty($email) && !empty($adresse) && !empty($telephone) ) {
-                $sql = "UPDATE clients SET nom_client = ?, email = ?, adresse = ?, telephone = ? where id_client = ?";
-                $stm = $db->prepare($sql);
-                $stm->execute([$nom, $email, $adresse, $telephone, $id_client]);
+                if(password_verify($oldpass,$result->pasword)){
+                    $pashash = password_hash($newpass,PASSWORD_DEFAULT);
+                    $sql = "UPDATE clients SET nom_client = ?, email = ?, adresse = ?, pasword = ? ,telephone = ? where id_client = ?";
+                    $stm = $db->prepare($sql);
+                    $stm->execute([$nom, $email, $adresse,$pashash, $telephone, $id_client]);
+                    
                 $_SESSION['nom_client'] = $nom;
                 header("Location:profile_client.php");
+                }
+             
             }
         }
 
@@ -89,12 +99,12 @@ session_start();
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <label for="adresse" class="form-label">Paasword</label>
-                        <input type="text" class="form-control"  name="pass"required placeholder="Enter Your Paasword">
+                        <label for="adresse" class="form-label">Old Password</label>
+                        <input type="text" class="form-control"  name="oldpass"required placeholder="Enter Your Old Password">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <label for="tel" class="form-label">Confirm password</label>
-                        <input type="tel" class="form-control"  name="confirm" placeholder="Confirm Your Paasword">
+                        <label for="tel" class="form-label">New Password </label>
+                        <input type="tel" class="form-control"  name="newpass" placeholder="Enter Ur New Password">
                     </div>
                 </div>
                 <div class="row">
@@ -105,44 +115,6 @@ session_start();
             </form>
 
         </div>
-
-        <!-- <div class="content">
-            <div class="cnt1">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h1>Clients</h1>
-                    
-                </div>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Adresse</th>
-                            <th scope="col">Telephone</th>
-                            <th scope="col" style="padding-left: 80px;">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr>
-                            <td><?php echo $result->id_client ?></td>
-                            <td><?php echo $result->nom_client ?></td>
-                            <td><?php echo $result->email ?></td>
-                            <td><?php echo $result->adresse ?></td>
-                            <td><?php echo $result->telephone ?></td>
-                            <td>
-                                <a href="updateclient.php?id_client=<?php echo $result->id_client ?>">
-                                    <button class="update">Update</button>
-                                </a>
-                               
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-        </div> -->
     </div>
 
 </body>

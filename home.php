@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -21,10 +20,10 @@ session_start();
         <ul class="navlinks">
             <li><a href="home.php">Shop</a></li>
             <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="icons">
-            <img src="images/icons8-shop-30.png">
+           <a href="panier.php"><img src="images/icons8-shop-30.png"></a> 
             <?php
             if (!isset($_SESSION['id_client'])): ?>
                 <button class="signup"><a href="SignUp.php">SignUp</a></button>
@@ -44,7 +43,7 @@ session_start();
                 we believe in celebrating individuality through timeless designs and vibrant trends. <br>
                 Let your wardrobe tell your story—authentic, confident, and uniquely you.
             </p>
-            <button class="shopbtn">Shop Now</button>
+            <a href="#shop"><button class="shopbtn">Shop Now</button></a>
         </div>
         <img src="images/image.png" class="animated-lady">
     </section>
@@ -83,7 +82,7 @@ session_start();
 
 
     ?>
-    <section class="shop">
+    <section class="shop" id="shop">
         <h2>Shop Now</h2>
         <div class="container_cards">
             <?php foreach ($result as $r) : ?>
@@ -95,8 +94,10 @@ session_start();
                         <div class="images_container">
                             <span><?php echo $r->prix ?>DH</span>
                             <div>
+                                <a href="add_favorite.php?favorite_product=<?php echo $r->id_produit?>&client=<?php echo $_SESSION['id_client'] ?? '' ?>">
                                 <img src="images/hearticon.png" class="img">
-                                <a href="add_panier.php?id_produit=<?php echo $r->id_produit ?>&client=<?php echo $_SESSION['id_client']; ?>">
+                                </a>
+                                <a href="add_panier.php?id_produit=<?php echo $r->id_produit ?>&client=<?php echo $_SESSION['id_client'] ?? '' ?>">
                                     <img src="images/icons8-shop-30.png">
                                 </a>
 
@@ -111,7 +112,7 @@ session_start();
 
 
 
-    <section class="contact">
+    <section class="contact" id="contact">
         <div class="container_contact">
             <h2>Contact Us</h2>
             <form action="" class="form">
@@ -122,11 +123,55 @@ session_start();
             </form>
         </div>
     </section>
-    <footer>
-        <div class="footer">
-
+    <footer style="background-color: #C37463; color: white; padding: 20px 0;">
+    <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; max-width: 1200px; margin: auto;">
+        <!-- About Us Section -->
+        <div style="flex: 1; min-width: 250px;">
+            <h3 style="margin-bottom: 10px;">About Us</h3>
+            <p style="line-height: 1.6;">
+                MaryamStore is your one-stop destination for trendy and high-quality clothing. 
+                We believe in empowering confidence through timeless designs and vibrant trends.
+            </p>
         </div>
-    </footer>
+
+        <!-- Quick Links Section -->
+        <div style="flex: 1; min-width: 250px;">
+            <h3 style="margin-bottom: 10px;">Quick Links</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li><a href="home.php" style="color: white; text-decoration: none;">Shop</a></li>
+                <li><a href="#about" style="color: white; text-decoration: none;">About Us</a></li>
+                <li><a href="#contact" style="color: white; text-decoration: none;">Contact</a></li>
+                <li><a href="login.php" style="color: white; text-decoration: none;">Login</a></li>
+                <li><a href="SignUp.php" style="color: white; text-decoration: none;">Sign Up</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Information Section -->
+        <div style="flex: 1; min-width: 250px;">
+            <h3 style="margin-bottom: 10px;">Contact Information</h3>
+            <p style="line-height: 1.6;">
+                <strong>Address:</strong> 123 Fashion Street, Cityville<br>
+                <strong>Email:</strong> <a href="mailto:info@maryamstore.com" style="color: white; text-decoration: none;">info@maryamstore.com</a><br>
+                <strong>Phone:</strong> +123 456 7890
+            </p>
+            <div style="margin-top: 10px;">
+                <a href="https://www.facebook.com" target="_blank" style="margin-right: 10px;">
+                    <img src="images/icons8-facebook-100.png" alt="Facebook" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://www.instagram.com" target="_blank" style="margin-right: 10px;">
+                    <img src="images/icons8-instagram-90.png" alt="Instagram" style="width: 24px; height: 24px;">
+                </a>
+                <a href="https://www.twitter.com" target="_blank">
+                    <img src="images/icons8-x-100.png" alt="Twitter" style="width: 24px; height: 24px;">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 20px;">
+        &copy; 2024 MaryamStore. All Rights Reserved.
+    </div>
+</footer>
+
 
 </body>
 
