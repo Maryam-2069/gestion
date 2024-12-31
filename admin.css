@@ -123,4 +123,32 @@ body {
     text-align: center;
     margin-bottom: 20px;
 }
+.cnt{
+    margin: auto !important;
+    background-color: white;
+    border-radius: 20px;
+    width: 50%;
+    padding: 20px;
+    margin-left: 35% !important;
+}
+.picture img {
+    margin-left: 40%;
+}
+.cnt h2{
+    text-align: center;
+    padding: 20px;
+}
+.updt{
+    width: 100%;
+    border: 1px solid white;
+    background-color: #C37463;
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+}
+input {
+    padding: 10px !important;
+    border: 1px solid #C37463 !important;
+    border-radius: 20px !important;
+}
 

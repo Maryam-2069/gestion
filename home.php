@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 ?>
@@ -15,7 +15,7 @@ session_start();
 </head>
 
 <body>
- 
+
     <nav>
         <h3 class="logo">Logo</h3>
         <ul class="navlinks">
@@ -25,14 +25,14 @@ session_start();
         </ul>
         <div class="icons">
             <img src="images/icons8-shop-30.png">
-            <?php 
-                if(!isset($_SESSION['id_client'])):?>
+            <?php
+            if (!isset($_SESSION['id_client'])): ?>
                 <button class="signup"><a href="SignUp.php">SignUp</a></button>
                 <button class="signup"><a href="login.php">Login</a></button>
-                <?php else: ?>
+            <?php else: ?>
                 <a href="profile_client.php"><img src="images/profile.png" style="width: 40px;"></a>
-           <?php endif ?>
-        
+            <?php endif ?>
+
         </div>
     </nav>
     <section class="intro">
@@ -81,30 +81,33 @@ session_start();
 
 
 
- 
+
     ?>
     <section class="shop">
-    <h2>Shop Now</h2>
-    <div class="container_cards">
-        <?php foreach ($result as $r) : ?>
-            <div class="cardds">
-                <img src="<?php echo $r->image ?>" alt="Product Image">
-                <div class="foooter">
-                    <span style="font-weight :bold;"><?php echo $r->nom_produit ?></span>
-                    <p><?php echo $r->description ?></p>
-                    <div class="images_container">
-                        <span><?php echo $r->prix ?>DH</span>
-                        <div>
-                        <img src="images/hearticon.png" class="img">
-                        <a href="add_panier.php?id_produit=<?php echo $r->id_produit ?>&prix=<?php echo $r->prix ?>&nom=<?php echo $r->nom_produit ?>"><img src="images/icons8-shop-30.png"></a>
+        <h2>Shop Now</h2>
+        <div class="container_cards">
+            <?php foreach ($result as $r) : ?>
+                <div class="cardds">
+                    <img src="<?php echo $r->image ?>" alt="Product Image">
+                    <div class="foooter">
+                        <span style="font-weight :bold;"><?php echo $r->nom_produit ?></span>
+                        <p><?php echo $r->description ?></p>
+                        <div class="images_container">
+                            <span><?php echo $r->prix ?>DH</span>
+                            <div>
+                                <img src="images/hearticon.png" class="img">
+                                <a href="add_panier.php?id_produit=<?php echo $r->id_produit ?>&client=<?php echo $_SESSION['id_client']; ?>">
+                                    <img src="images/icons8-shop-30.png">
+                                </a>
+
+                            </div>
+
                         </div>
-                       
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
-</section>
+            <?php endforeach; ?>
+        </div>
+    </section>
 
 
 
