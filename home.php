@@ -23,7 +23,7 @@ session_start();
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="icons">
-           <a href="panier.php"><img src="images/icons8-shop-30.png"></a> 
+            <a href="panier.php"><img src="images/icons8-shop-30.png"></a>
             <?php
             if (!isset($_SESSION['id_client'])): ?>
                 <button class="signup"><a href="SignUp.php">SignUp</a></button>
@@ -77,10 +77,6 @@ session_start();
     $stm = $db->prepare($sql);
     $stm->execute();
     $result = $stm->fetchAll(PDO::FETCH_OBJ);
-
-
-
-
     ?>
     <section class="shop" id="shop">
         <h2>Shop Now</h2>
@@ -94,8 +90,8 @@ session_start();
                         <div class="images_container">
                             <span><?php echo $r->prix ?>DH</span>
                             <div>
-                                <a href="add_favorite.php?favorite_product=<?php echo $r->id_produit?>&client=<?php echo $_SESSION['id_client'] ?? '' ?>">
-                                <img src="images/hearticon.png" class="img">
+                                <a href="add_favorite.php?favorite_product=<?php echo $r->id_produit ?>&client=<?php echo $_SESSION['id_client'] ?? '' ?>" style=" text-decoration:none">
+                                    <img src="images/hearticon.png" class="img">
                                 </a>
                                 <a href="add_panier.php?id_produit=<?php echo $r->id_produit ?>&client=<?php echo $_SESSION['id_client'] ?? '' ?>">
                                     <img src="images/icons8-shop-30.png">
@@ -109,9 +105,6 @@ session_start();
             <?php endforeach; ?>
         </div>
     </section>
-
-
-
     <section class="contact" id="contact">
         <div class="container_contact">
             <h2>Contact Us</h2>
@@ -124,53 +117,48 @@ session_start();
         </div>
     </section>
     <footer style="background-color: #C37463; color: white; padding: 20px 0;">
-    <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; max-width: 1200px; margin: auto;">
-        <!-- About Us Section -->
-        <div style="flex: 1; min-width: 250px;">
-            <h3 style="margin-bottom: 10px;">About Us</h3>
-            <p style="line-height: 1.6;">
-                MaryamStore is your one-stop destination for trendy and high-quality clothing. 
-                We believe in empowering confidence through timeless designs and vibrant trends.
-            </p>
-        </div>
-
-        <!-- Quick Links Section -->
-        <div style="flex: 1; min-width: 250px;">
-            <h3 style="margin-bottom: 10px;">Quick Links</h3>
-            <ul style="list-style: none; padding: 0;">
-                <li><a href="home.php" style="color: white; text-decoration: none;">Shop</a></li>
-                <li><a href="#about" style="color: white; text-decoration: none;">About Us</a></li>
-                <li><a href="#contact" style="color: white; text-decoration: none;">Contact</a></li>
-                <li><a href="login.php" style="color: white; text-decoration: none;">Login</a></li>
-                <li><a href="SignUp.php" style="color: white; text-decoration: none;">Sign Up</a></li>
-            </ul>
-        </div>
-
-        <!-- Contact Information Section -->
-        <div style="flex: 1; min-width: 250px;">
-            <h3 style="margin-bottom: 10px;">Contact Information</h3>
-            <p style="line-height: 1.6;">
-                <strong>Address:</strong> 123 Fashion Street, Cityville<br>
-                <strong>Email:</strong> <a href="mailto:info@maryamstore.com" style="color: white; text-decoration: none;">info@maryamstore.com</a><br>
-                <strong>Phone:</strong> +123 456 7890
-            </p>
-            <div style="margin-top: 10px;">
-                <a href="https://www.facebook.com" target="_blank" style="margin-right: 10px;">
-                    <img src="images/icons8-facebook-100.png" alt="Facebook" style="width: 24px; height: 24px;">
-                </a>
-                <a href="https://www.instagram.com" target="_blank" style="margin-right: 10px;">
-                    <img src="images/icons8-instagram-90.png" alt="Instagram" style="width: 24px; height: 24px;">
-                </a>
-                <a href="https://www.twitter.com" target="_blank">
-                    <img src="images/icons8-x-100.png" alt="Twitter" style="width: 24px; height: 24px;">
-                </a>
+        <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; max-width: 1200px; margin: auto;">
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="margin-bottom: 10px;">About Us</h3>
+                <p style="line-height: 1.6;">
+                    MaryamStore is your one-stop destination for trendy and high-quality clothing.
+                    We believe in empowering confidence through timeless designs and vibrant trends.
+                </p>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="margin-bottom: 10px;">Quick Links</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="home.php" style="color: white; text-decoration: none;">Shop</a></li>
+                    <li><a href="#about" style="color: white; text-decoration: none;">About Us</a></li>
+                    <li><a href="#contact" style="color: white; text-decoration: none;">Contact</a></li>
+                    <li><a href="login.php" style="color: white; text-decoration: none;">Login</a></li>
+                    <li><a href="SignUp.php" style="color: white; text-decoration: none;">Sign Up</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="margin-bottom: 10px;">Contact Information</h3>
+                <p style="line-height: 1.6;">
+                    <strong>Address:</strong> 123 Fashion Street, Cityville<br>
+                    <strong>Email:</strong> <a href="mailto:info@maryamstore.com" style="color: white; text-decoration: none;">info@maryamstore.com</a><br>
+                    <strong>Phone:</strong> +123 456 7890
+                </p>
+                <div style="margin-top: 10px;">
+                    <a href=""  style="margin-right: 10px; text-decoration:none">
+                        <img src="images/icons8-facebook-100.png" alt="Facebook" style="width: 24px; height: 24px;">
+                    </a>
+                    <a href=""  style="margin-right: 10px;  text-decoration:none">
+                        <img src="images/icons8-instagram-90.png" alt="Instagram" style="width: 24px; height: 24px;">
+                    </a>
+                    <a href="" style=" text-decoration:none">
+                        <img src="images/icons8-x-100.png" alt="Twitter" style="width: 24px; height: 24px;">
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-    <div style="text-align: center; margin-top: 20px;">
-        &copy; 2024 MaryamStore. All Rights Reserved.
-    </div>
-</footer>
+        <div style="text-align: center; margin-top: 20px;">
+            &copy; 2024 MaryamStore. All Rights Reserved.
+        </div>
+    </footer>
 
 
 </body>
