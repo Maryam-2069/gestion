@@ -2,15 +2,13 @@
 session_start();
 require_once "cnx.php";
 
-// Check if user is logged in
 if (!isset($_SESSION['id_client'])) {
-    header("Location: login.php"); // Redirect if not logged in
+    header("Location: login.php"); 
     exit();
 }
 
 $client_id = $_SESSION['id_client'];
 
-// Query to get favorite products for the logged-in user
 $sql = "
     SELECT produits.id_produit, produits.nom_produit, produits.description, produits.prix, produits.image
     FROM favorites
@@ -21,7 +19,6 @@ $sql = "
 $stm = $db->prepare($sql);
 $stm->execute([$client_id]);
 
-// Fetch the favorite products
 $favorites = $stm->fetchAll(PDO::FETCH_OBJ);
 ?>
 
@@ -40,8 +37,6 @@ $favorites = $stm->fetchAll(PDO::FETCH_OBJ);
 
     <div class="container">
         <h2>Your Favorite Products</h2>
-
-        <!-- Table to display favorite products -->
         <table class="table">
             <thead>
                 <tr>

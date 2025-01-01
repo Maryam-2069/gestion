@@ -112,7 +112,7 @@ session_start();
                 <input type="text" placeholder="Name" class="inp"><br>
                 <input type="text" placeholder="Email" class="inp"><br>
                 <textarea placeholder="Message" class="inp"></textarea><br>
-                <input type="submit" value="Send" class="send">
+                <input type="submit" value="Send" class="send" style="margin: 20px;">
             </form>
         </div>
     </section>
@@ -139,18 +139,18 @@ session_start();
                 <h3 style="margin-bottom: 10px;">Contact Information</h3>
                 <p style="line-height: 1.6;">
                     <strong>Address:</strong> 123 Fashion Street, Cityville<br>
-                    <strong>Email:</strong> <a href="mailto:info@maryamstore.com" style="color: white; text-decoration: none;">info@maryamstore.com</a><br>
+                    <strong>Email:</strong> <a href="" style="color: white; text-decoration: none;">info@maryamstore.com</a><br>
                     <strong>Phone:</strong> +123 456 7890
                 </p>
                 <div style="margin-top: 10px;">
-                    <a href=""  style="margin-right: 10px; text-decoration:none">
-                        <img src="images/icons8-facebook-100.png" alt="Facebook" style="width: 24px; height: 24px;">
+                    <a href="" style="margin-right: 10px; text-decoration:none">
+                        <img src="images/icons8-facebook-100.png"  style="width: 24px; height: 24px;">
                     </a>
-                    <a href=""  style="margin-right: 10px;  text-decoration:none">
-                        <img src="images/icons8-instagram-90.png" alt="Instagram" style="width: 24px; height: 24px;">
+                    <a href="" style="margin-right: 10px;  text-decoration:none">
+                        <img src="images/icons8-instagram-90.png"  style="width: 24px; height: 24px;">
                     </a>
                     <a href="" style=" text-decoration:none">
-                        <img src="images/icons8-x-100.png" alt="Twitter" style="width: 24px; height: 24px;">
+                        <img src="images/icons8-x-100.png"  style="width: 24px; height: 24px;">
                     </a>
                 </div>
             </div>
