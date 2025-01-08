@@ -29,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_quantity'])) {
     header("Location: panier.php");
     exit;
 }
-
 if (isset($_GET['remove_id'])) {
     $id_produit = $_GET['remove_id'];
     $removeSql = "DELETE FROM panier WHERE id_produit = ? AND id_client = ?";
@@ -76,20 +75,27 @@ if (isset($_GET['remove_id'])) {
                     </td>
                     <td>
                         <a href="panier.php?remove_id=<?php echo $item->id_produit; ?>"><img src="images/trash.png" style="width: 30px;"></a>
+                        <a href="add_favorite.php?favorite_product=<?php echo $item->id_produit ?>&client=<?php echo $_SESSION['id_client'] ?? '' ?>" style=" text-decoration:none">
+                                        <img src="images/hearticon.png" style="width: 30px;">
+                                    </a>
                     </td>
                 </tr>
                 <?php
                 $total += $item->prix * $item->quantite;
+                $_SESSION['total'] = $total ;
                 ?>
             <?php endforeach; ?>
         </tbody>
     </table>
 
+    
+    <div style="display:flex">
+    <a href="home.php" class="back-btn">Back to Shop</a>
     <div class="total">
         <h3>Total: <?php echo $total; ?> DH</h3>
     </div>
-
-    <a href="home.php" class="back-btn">Back to Shop</a>
+    <a href="continueorder.php?total=<?php echo $total ?>" class="back-btn">Checkout</a>
+    </div>
     </div>
  
 </body>

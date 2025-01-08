@@ -6,7 +6,6 @@ if (!isset($_SESSION['id_client'])) {
     header("Location: login.php"); 
     exit();
 }
-
 $client_id = $_SESSION['id_client'];
 
 $sql = "
@@ -20,16 +19,27 @@ $stm = $db->prepare($sql);
 $stm->execute([$client_id]);
 
 $favorites = $stm->fetchAll(PDO::FETCH_OBJ);
+
+
+if (isset($_GET['remove_id'])) {
+    $id_produit = $_GET['remove_id'];
+    $id_client = $_SESSION['id_client'];
+    $removeSql = "DELETE FROM favorites WHERE product_id = ? AND client_id = ?";
+    $removeStm = $db->prepare($removeSql);
+    $removeStm->execute([$id_produit, $id_client]);
+
+    header("Location: favorite.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Favorite Products</title>
-    <link rel="stylesheet" href="favorite.css">
+    <link rel="stylesheet" href="favorite.css?v-1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 
@@ -57,7 +67,10 @@ $favorites = $stm->fetchAll(PDO::FETCH_OBJ);
                             <td><?php echo $favorite->prix; ?> DH</td>
                             
                             <td>
-                                <a href="favorite.php?remove_id=<?php echo $favorite->id_produit; ?>" class="btn btn-danger btn-sm">Remove</a>
+                                <a href="favorite.php?remove_id=<?php echo $favorite->id_produit; ?>" class="trash"><img src="images/trash.png" alt=""></a>
+                                <a href="add_panier.php?id_produit=<?php echo $favorite->id_produit ?>&client=<?php echo $_SESSION['id_client'] ?? '' ?>">
+                                        <img src="images/icons8-shop-30.png">
+                                    </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -70,8 +83,8 @@ $favorites = $stm->fetchAll(PDO::FETCH_OBJ);
         </table>
 
         <div class="text-center">
-            <a href="home.php">
-                <button class="gh">Go Back Home</button>
+            <a href="profile_client.php" style='text-decoration: none;'>
+                <button class="back-btn">Go Back</button>
             </a>
         </div>
     </div>

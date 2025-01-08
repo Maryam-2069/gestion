@@ -64,7 +64,17 @@
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     <button type="submit" class="send" name="sub">Login</button>
+                                
                                 </div>
+                                <p style="text-align:center; margin-top:20px; font-weight: bold;">
+    Don't have an account? 
+    <a href="SignUp.php" style="text-decoration:none; color:#C37463;" 
+       onmouseover="this.style.color='#D08B7B';" 
+       onmouseout="this.style.color='#C37463';">
+       SignUp
+    </a>
+</p>
+
                             </form>
                         </div>
                     </div>

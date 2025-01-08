@@ -22,8 +22,7 @@ if ($fv) {
     $sqll = "INSERT INTO favorites (client_id, product_id) VALUES (?, ?)";
     $sttm = $db->prepare($sqll);
     $sttm->execute([$id_client, $id_produit]);
-
-    if ($insertStm) {
+    if ($sttm) {
         echo "Product added to your favorites.";
     } else {
         die("Error adding product to favorites.");

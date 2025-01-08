@@ -11,7 +11,7 @@
 <nav>
         <h3 class="logo">Logo</h3>
         <ul class="navlinks">
-            <li><a href="">Shop</a></li>
+            <li><a href="home.php">Shop</a></li>
             <li><a href="">About</a></li>
             <li><a href="">Contact</a></li>
         </ul>
@@ -72,7 +72,14 @@
                             <div class="d-flex justify-content-center">
                                 <button type="submit" class="send" name="submit">Sign Up</button>
                             </div>
-                            
+                            <p style="text-align:center; margin-top:20px; font-weight: bold;">
+    Already Have account? 
+    <a href="login.php" style="text-decoration:none; color:#C37463;" 
+       onmouseover="this.style.color='#D08B7B';" 
+       onmouseout="this.style.color='#C37463';">
+       Login
+    </a>
+</p>
                             
                         </form>
                     </div>

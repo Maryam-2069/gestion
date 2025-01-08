@@ -20,7 +20,7 @@
                 </li>
                 <li>
                     <img src="images/order.png" alt="Orders Icon">
-                    <a href="admin_order.php">Orders</a>
+                    <a href="admin_orders.php">Orders</a>
                 </li>
                 <li>
                     <img src="images/product.png" alt="Products Icon">
@@ -46,6 +46,41 @@
             exit;
         }
 
+        if (isset($_GET['id_produit'])) {
+            $id_produit = $_GET['id_produit'];
+        
+            if (!empty($id_produit)) { 
+                try {
+                  
+                    $db->beginTransaction();
+        
+                  
+                    $sql = "DELETE FROM favorites WHERE product_id = ?";
+                    $stmt = $db->prepare($sql);
+                    $stmt->execute([$id_produit]);
+        
+                    $sql = "DELETE FROM panier WHERE id_produit = ?";
+                    $stmt = $db->prepare($sql);
+                    $stmt->execute([$id_produit]);
+        
+                 
+                    $sq = "DELETE FROM produits WHERE id_produit = ?";
+                    $stmt = $db->prepare($sq);
+                    $stmt->execute([$id_produit]);
+        
+                   
+                    $db->commit();
+        
+                 
+                    header("Location: admin_produit.php");
+                    exit;
+                } catch (PDOException $e) {
+                    $db->rollBack();
+                    echo "Error: " . $e->getMessage();
+                }
+            } 
+        }
+        
 
 
         ?>
@@ -80,8 +115,7 @@
                                         <img src="images/modify.png" style="width: 30px ;margin-left :55px">
                                     </a>
                                     <a
-                                        href="deleteproduit.php?id_produit=<?php echo $r->id_produit; ?>"
-                                        
+                                        href="admin_produit.php?id_produit=<?php echo $r->id_produit; ?>"
                                         onclick="return confirm('Are you sure you want to delete product ID <?php echo $r->id_produit; ?>?');">
                                         <img src="images/trash.png"style="width: 30px ;">
                                     </a>

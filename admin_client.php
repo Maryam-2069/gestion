@@ -45,8 +45,17 @@
             exit;
         }
 
-
-
+        if (isset($_GET['remove_cient'])) {
+            $id_clientt = $_GET['remove_cient'];
+            if (!empty($id_clientt)) { 
+                $sql = "DELETE FROM clients WHERE id_client = ?";
+                $stm = $db->prepare($sql);
+                if ($stm->execute([$id_clientt])) {
+                    header("Location: admin_client.php"); 
+                } 
+            } 
+        }
+        
         ?>
         <div class="content">
             <div class="cnt1">
@@ -77,7 +86,11 @@
                                     <a href="updateclient.php?id_client=<?php echo $r->id_client ?>">
                                         <img src="images/modify.png" style="width: 30px ;margin-left :55px">
                                     </a>
-                                    <img src="images/trash.png" style="width: 30px;">
+                                    <a href="admin_client.php?remove_cient=<?php echo $r->id_client ?>"
+                                        onclick="return confirm('Are you sure you want to delete this client?');">
+                                        <img src="images/trash.png" style="width: 30px;">
+                                    </a>
+
                                 </td>
                             </tr>
                         <?php endforeach ?>

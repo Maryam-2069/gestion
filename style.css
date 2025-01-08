@@ -14,7 +14,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
+    background-color:white;
     padding: 10px 20px;
   
 }
@@ -27,15 +27,15 @@ nav {
     gap: 50px;
     margin-top: 10px;
 }
-.navlinks a{
+.navlinks li a{
     text-decoration: none;
-    color: black;
+    color: black !important;
     font-size: 1em;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     transition: color 0.3s;
 }
 .navlinks a:hover{
-    color: #C37463;
+    color: #C37463 !important;
 }
 .icons{
     display: flex;
@@ -282,8 +282,25 @@ nav {
     margin-top: 20px;
 }
 
+.message-container {
+    width: 60%; /* Adjust width as needed */
+    max-width: 600px; /* Optional: limits the max width of the container */
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px; /* Optional: adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds shadow for a more polished look */
+    text-align: center;
+    margin: 0 auto; /* Centers horizontally */
+    position: absolute;
+    top: 50%; /* Centers vertically */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers exactly in the middle */
+}
 
-
+.message-container p {
+    font-size: 1.2rem;
+    color: #333; /* Optional: sets the text color */
+}
 
 
 

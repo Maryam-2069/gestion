@@ -30,6 +30,10 @@ session_start();
                     <a href="panier.php">Orders</a>
                 </li>
                 <li>
+                    <img src="images/order.png" alt="Clients Icon">
+                    <a href="order_history.php">Orders History</a>
+                </li>
+                <li>
                     <img src="images/goback.png" alt="Logout Icon">
                     <a href="home.php">Go Back Shop</a>
                 </li>

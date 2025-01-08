@@ -73,7 +73,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Ensures the content stays at the top */
+    justify-content: flex-start; 
 }
 .dashboard .profile-img {
     display: block;
@@ -159,5 +159,6 @@ input {
     margin: 10px;
     color: white;
     align-self: center;
+   
 }
 
